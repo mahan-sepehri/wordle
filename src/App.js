@@ -1,25 +1,29 @@
-import logo from './logo.svg';
-import './App.css';
+import React, { useState } from "react";
 
-function App() {
+import Row from "./components/Row";
+
+const App = () => {
+  const [activeRow, setActiveRow] = useState(1);
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Row
+        active={activeRow === 1 ? true : false}
+        setActiveRow={setActiveRow}
+      />
+      <Row
+        active={activeRow === 2 ? true : false}
+        setActiveRow={setActiveRow}
+      />
+      <Row
+        active={activeRow === 3 ? true : false}
+        setActiveRow={setActiveRow}
+      />
+      <Row
+        active={activeRow === 4 ? true : false}
+        setActiveRow={setActiveRow}
+      />
     </div>
   );
-}
+};
 
 export default App;
