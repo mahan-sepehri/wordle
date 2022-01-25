@@ -50,11 +50,11 @@ const Row = (props) => {
     }
   };
 
-  const handleKeyDown = (e) => {
-    const key = e.key.toLowerCase();
+  const handleKeyDown = (key) => {
+    // const key = e.key.toLowerCase();
     const isLetter = key >= "ا" && key <= "ی";
 
-    if (e.key === "Backspace") {
+    if (key === "Backspace") {
       if (activeTile === 0) {
         return;
       }
@@ -62,25 +62,31 @@ const Row = (props) => {
       tiles[activeTile].current.textContent = "";
       return;
     }
-    if (activeTile > 4 && e.key !== "Enter") {
+    if (activeTile > 4 && key !== "Enter") {
       return console.log(activeTile, "no more");
-    } else if (activeTile > 4 && e.key === "Enter") {
+    } else if (activeTile > 4 && key === "Enter") {
       const guessed = tiles.map((tile) => tile.current.textContent);
       document.removeEventListener("keydown", handleKeyDown);
       checkGuess(guessed);
       props.setActiveRow((current) => current + 1);
       activeTile = 0;
+      props.setLastKeyPress("");
       return;
     }
     if (key.length === 1 && isLetter) {
-      tiles[activeTile].current.textContent = e.key;
+      tiles[activeTile].current.textContent = key;
       activeTile++;
     }
   };
 
   useEffect(() => {
-    if (props.active) {
-      document.addEventListener("keydown", handleKeyDown);
+    // if (props.active) {
+    //   document.addEventListener("keydown", handleKeyDown);
+    // }
+
+    if (props.active && props.lastKeyPress) {
+      console.log(props.lastKeyPress);
+      handleKeyDown(props.lastKeyPress);
     }
   });
 
