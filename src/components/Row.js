@@ -85,7 +85,6 @@ const Row = (props) => {
     // }
 
     if (props.active && props.lastKeyPress) {
-      console.log(props.lastKeyPress);
       handleKeyDown(props.lastKeyPress);
     }
   });

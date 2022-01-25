@@ -1,0 +1,26 @@
+* {
+  font-family: "tahoma", cursive;
+  user-select: none;
+}
+
+.game-screen {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  gap: 20px;
+}
+
+.row-container {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.keyboard-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 90%;
+}

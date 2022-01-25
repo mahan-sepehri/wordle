@@ -1,8 +1,16 @@
 .keyboard {
   display: flex;
   flex-direction: column;
+  gap: 5px;
+  width: 100%;
+  max-width: 350px;
 }
 .key-row {
   display: flex;
   justify-content: center;
+  gap: 3px;
+}
+
+.key-row:nth-of-type(3) {
+  justify-content: end;
 }

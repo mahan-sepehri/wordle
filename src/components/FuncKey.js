@@ -4,10 +4,13 @@ import "./Key.css";
 const FuncKey = (props) => {
   return (
     <div
-      className="func-key"
-      onClick={() => props.setLastKeyPress(props.letter)}
+      className="key func-key"
+      onClick={() => {
+        props.setLastKeyPress(props.letter);
+        props.setKeyPressed((current) => current + 1);
+      }}
     >
-      {props.letter}
+      {props.icon}
     </div>
   );
 };

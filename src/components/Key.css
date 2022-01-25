@@ -1,23 +1,24 @@
 .key {
-  width: 40px;
   height: 40px;
   display: flex;
   justify-content: center;
   align-items: center;
-  border: 1px solid black;
-  background-color: rgb(236, 236, 236);
+  flex: 1;
+
+  background-color: #d3d6da;
+  font-size: 13px;
   border-radius: 5px;
   cursor: pointer;
+  touch-action: manipulation;
 }
 
 .func-key {
-  width: 80px;
-  height: 40px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border: 1px solid black;
-  background-color: rgb(236, 236, 236);
-  border-radius: 5px;
-  cursor: pointer;
+  background-color: rgb(134, 200, 255);
+}
+.func-key svg {
+  width: 20px;
+}
+
+svg.enter-key {
+  width: 40px;
 }

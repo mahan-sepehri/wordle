@@ -3,9 +3,12 @@ import React, { useState } from "react";
 import Row from "./components/Row";
 import Keyboard from "./components/Keyboard";
 
+import "./App.css";
+
 const App = () => {
   const [activeRow, setActiveRow] = useState(1);
   const [lastKeyPress, setLastKeyPress] = useState("");
+  const [keyPressed, setKeyPressed] = useState(0);
   return (
     <div className="game-screen">
       <div className="row-container">
@@ -47,7 +50,11 @@ const App = () => {
         />
       </div>
       <div className="keyboard-container">
-        <Keyboard setLastKeyPress={setLastKeyPress} />
+        <Keyboard
+          setLastKeyPress={setLastKeyPress}
+          keyPressed={keyPressed}
+          setKeyPressed={setKeyPressed}
+        />
       </div>
     </div>
   );
