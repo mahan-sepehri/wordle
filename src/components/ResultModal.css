@@ -1,0 +1,39 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.212);
+}
+
+.result-modal {
+  width: 70vw;
+  height: 70vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  gap: 40px;
+}
+
+.play-again-button {
+  width: 140px;
+  height: 40px;
+  border-radius: 9px;
+  background-color: transparent;
+  border: 1px solid black;
+  cursor: pointer;
+}
+
+@media (max-width: 720px) {
+  .result-modal {
+    width: 90vw;
+  }
+}

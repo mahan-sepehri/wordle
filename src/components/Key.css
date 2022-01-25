@@ -1,5 +1,5 @@
 .key {
-  height: 40px;
+  height: 45px;
   display: flex;
   justify-content: center;
   align-items: center;
@@ -10,6 +10,18 @@
   border-radius: 5px;
   cursor: pointer;
   touch-action: manipulation;
+}
+
+[data-state="correct"] {
+  background-color: #6aaa64;
+}
+
+[data-state="present"] {
+  background-color: #c9b458;
+}
+
+[data-state="absent"] {
+  background-color: #787c7e;
 }
 
 .func-key {

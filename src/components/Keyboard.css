@@ -3,7 +3,7 @@
   flex-direction: column;
   gap: 5px;
   width: 100%;
-  max-width: 350px;
+  max-width: 480px;
 }
 .key-row {
   display: flex;
