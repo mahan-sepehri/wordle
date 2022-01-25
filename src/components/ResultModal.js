@@ -15,6 +15,7 @@ const ResultModal = (props) => {
     <div className="overlay">
       <div className="result-modal">
         <h1>{props.msg}</h1>
+        <h2>پاسخ : {props.answer}</h2>
         <button className="play-again-button" onClick={handlePlayAgain}>
           دوباره
         </button>

@@ -2,11 +2,9 @@ import React, { useEffect, useRef, useContext } from "react";
 import ShowResultContext from "../context/showResult";
 import scoreContext from "../context/scoreContext";
 import "./Row.css";
-import dictionary from "../dictionary/dictionary";
 
 let activeTile = 0;
-const randomNum = Math.floor(Math.random() * dictionary.length);
-let answer = dictionary[randomNum];
+
 const Row = (props) => {
   const { setShowResult, setHasLost } = useContext(ShowResultContext);
   const { setStreak, saveScore } = useContext(scoreContext);
@@ -20,7 +18,7 @@ const Row = (props) => {
 
   const checkGuess = (guess) => {
     console.log("cheked");
-    if (guess.join("") === answer) {
+    if (guess.join("") === props.answer) {
       tiles.forEach((tile) => tile.current.classList.add("green"));
       setShowResult(true);
       setHasLost(false);
@@ -34,7 +32,7 @@ const Row = (props) => {
     let remainingAnswer = [];
     let guessColor = [null, null, null, null, null];
     for (let i = 0; i < guess.length; i++) {
-      if (guess[i] === answer[i]) {
+      if (guess[i] === props.answer[i]) {
         tiles[i].current.classList.add("green");
 
         document
@@ -44,7 +42,7 @@ const Row = (props) => {
         guessColor[i] = "green";
       } else {
         remainingGuess.push(guess[i]);
-        remainingAnswer.push(answer[i]);
+        remainingAnswer.push(props.answer[i]);
       }
     }
 
