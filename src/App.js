@@ -6,6 +6,7 @@ import Keyboard from "./components/Keyboard";
 import StartModal from "./components/StartModal";
 import ResultModal from "./components/ResultModal";
 import ShowResultContext from "./context/showResult";
+import scoreContext from "./context/scoreContext";
 import dictionary from "./dictionary/dictionary";
 
 import "./App.css";
@@ -17,22 +18,26 @@ const App = () => {
   const [activeRow, setActiveRow] = useState(1);
   const [lastKeyPress, setLastKeyPress] = useState("");
   const [keyPressed, setKeyPressed] = useState(0);
-  const [gameStarted, setGameStarted] = useState(false);
 
   const { showResult, hasLost } = useContext(ShowResultContext);
+  const { played, setPlayed } = useContext(scoreContext);
   return (
     <>
-      {!gameStarted && <StartModal setGameStarted={setGameStarted} />}
+      {!played && <StartModal setPlayed={setPlayed} />}
       {showResult && (
         <ResultModal
           msg={hasLost ? "باختی" : "برنده‌شدی!"}
           setActiveRow={setActiveRow}
-          setGameStarted={setGameStarted}
           answer={answer}
         />
       )}
 
       <div className="game-screen">
+        <div className="game-header">
+          <button className="how-to" onClick={() => setPlayed(false)}>
+            ؟
+          </button>
+        </div>
         <div className="row-container">
           <Row
             active={activeRow === 1 ? true : false}

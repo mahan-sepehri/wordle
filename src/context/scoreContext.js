@@ -8,6 +8,7 @@ const initalScore = {
 const scoreContext = createContext(initalScore);
 
 export const ScoreContextProvider = (props) => {
+  const [played, setPlayed] = useState(localStorage.getItem("played") || false);
   const [streak, setStreak] = useState(+localStorage.getItem("streak") || 0);
   const [highScore, setHighScore] = useState(
     +localStorage.getItem("highscore") || 0
@@ -19,7 +20,15 @@ export const ScoreContextProvider = (props) => {
 
   return (
     <scoreContext.Provider
-      value={{ streak, setStreak, saveScore, highScore, setHighScore }}
+      value={{
+        streak,
+        setStreak,
+        saveScore,
+        highScore,
+        setHighScore,
+        played,
+        setPlayed,
+      }}
     >
       {props.children}
     </scoreContext.Provider>

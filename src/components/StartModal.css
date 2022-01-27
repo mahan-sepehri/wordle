@@ -1,0 +1,57 @@
+.overlay {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100vw;
+  height: 100vh;
+  z-index: 1000;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.212);
+}
+
+.start-modal {
+  width: 70vw;
+  height: 70vh;
+  background-color: white;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+}
+
+.game-rules {
+  display: flex;
+  flex-direction: column;
+  padding-left: 5vw;
+  padding-right: 5vw;
+  flex: 1;
+  gap: 10px;
+}
+
+.close-button-container {
+  position: relative;
+  width: 100%;
+  height: 60px;
+}
+
+.close-button {
+  width: 4vh;
+  height: 4vh;
+  position: absolute;
+  font-weight: bold;
+  background-color: white;
+  border: 1px solid black;
+  border-radius: 50%;
+  cursor: pointer;
+  top: 15px;
+  left: 15px;
+}
+
+@media (max-width: 720px) {
+  .start-modal {
+    width: 90vw;
+  }
+}
