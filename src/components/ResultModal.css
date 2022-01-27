@@ -23,6 +23,10 @@
   gap: 40px;
 }
 
+.set-data {
+  text-align: center;
+}
+
 .play-again-button {
   width: 140px;
   height: 40px;

@@ -7,7 +7,8 @@ let activeTile = 0;
 
 const Row = (props) => {
   const { setShowResult, setHasLost } = useContext(ShowResultContext);
-  const { setStreak, saveScore } = useContext(scoreContext);
+  const { setStreak, saveScore, highScore, setHighScore } =
+    useContext(scoreContext);
 
   const tileRef1 = useRef();
   const tileRef2 = useRef();
@@ -17,15 +18,18 @@ const Row = (props) => {
   const tiles = [tileRef1, tileRef2, tileRef3, tileRef4, tileRef5];
 
   const checkGuess = (guess) => {
-    console.log("cheked");
     if (guess.join("") === props.answer) {
       tiles.forEach((tile) => tile.current.classList.add("green"));
-      setShowResult(true);
-      setHasLost(false);
+
       setStreak((current) => {
-        saveScore(current + 1);
+        if (current + 1 > highScore) {
+          setHighScore(current + 1);
+        }
+        saveScore(current + 1, current + 1);
         return current++;
       });
+      setShowResult(true);
+      setHasLost(false);
       return;
     }
     let remainingGuess = [];
@@ -89,10 +93,10 @@ const Row = (props) => {
       setHasLost(true);
       setShowResult(true);
       setStreak(() => {
-        saveScore(0);
+        saveScore(0, highScore);
         return 0;
       });
-      return console.log("you Lost");
+      return;
     }
   };
 
