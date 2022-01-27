@@ -15,8 +15,7 @@ const ResultModal = (props) => {
     if (navigator.share) {
       navigator.share({
         title: "نامزل",
-        url: `${window.document.url}`,
-        text: "بیا نامزل بازی کن",
+        text: "بیا نامزل بازی کن\n",
       });
     } else {
       const text = `https://quizzical-carson-c0f478.netlify.app/ \n my highscore: ${highScore}`;
