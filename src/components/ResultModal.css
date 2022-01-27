@@ -44,6 +44,17 @@
   align-items: center;
 }
 
+.share-button {
+  width: 40px;
+  height: 40px;
+  background-color: white;
+  border-radius: 50%;
+  border: 1px solid black;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .pop-msg {
   padding: 5px;
   background-color: black;

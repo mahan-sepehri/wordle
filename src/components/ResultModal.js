@@ -1,5 +1,6 @@
 import React, { useContext, useState } from "react";
 import scoreContext from "../context/scoreContext";
+import { share } from "../svg/share";
 
 import "./ResultModal.css";
 
@@ -13,11 +14,12 @@ const ResultModal = (props) => {
   const handleShare = () => {
     if (navigator.share) {
       navigator.share({
-        title: "Mahan",
-        url: "mahan.com",
+        title: "نامزل",
+        url: `${window.document.url}`,
+        text: "بیا نامزل بازی کن",
       });
     } else {
-      const text = `https://mahan.com \n my highscore: ${highScore}`;
+      const text = `https://quizzical-carson-c0f478.netlify.app/ \n my highscore: ${highScore}`;
       navigator.clipboard
         .writeText(text)
         .then(
@@ -60,7 +62,9 @@ const ResultModal = (props) => {
           دوباره
         </button>
         <div className="share-container">
-          <button onClick={handleShare}>Share</button>
+          <button className="share-button" onClick={handleShare}>
+            {share}
+          </button>
           {copied && <p className="pop-msg">کپی شد</p>}
         </div>
       </div>
