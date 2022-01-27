@@ -12,13 +12,13 @@ const ResultModal = (props) => {
   };
 
   const handleShare = () => {
+    const text = `https://quizzical-carson-c0f478.netlify.app/ \n my highscore: ${highScore}`;
     if (navigator.share) {
       navigator.share({
         title: "نامزل",
-        text: "بیا نامزل بازی کن\n",
+        text: text,
       });
     } else {
-      const text = `https://quizzical-carson-c0f478.netlify.app/ \n my highscore: ${highScore}`;
       navigator.clipboard
         .writeText(text)
         .then(
