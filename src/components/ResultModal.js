@@ -1,12 +1,50 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import scoreContext from "../context/scoreContext";
 
 import "./ResultModal.css";
 
 const ResultModal = (props) => {
+  const [copied, setCopied] = useState(false);
   const { highScore } = useContext(scoreContext);
   const handlePlayAgain = () => {
     window.location.reload(false);
+  };
+
+  const handleShare = () => {
+    if (navigator.share) {
+      navigator.share({
+        title: "Mahan",
+        url: "mahan.com",
+      });
+    } else {
+      const text = `https://mahan.com \n my highscore: ${highScore}`;
+      navigator.clipboard
+        .writeText(text)
+        .then(
+          function () {
+            console.log("Async: Copying to clipboard was successful!");
+          },
+          function (err) {
+            console.error("Async: Could not copy text: ", err);
+          }
+        )
+        .then(() => {
+          setCopied(true);
+          const msg = document.querySelector(".pop-msg");
+          msg.classList.remove("exit");
+          setTimeout(() => {
+            if (msg) {
+              msg.classList.add("exit");
+            }
+          }, 1000);
+          setTimeout(() => {
+            if (msg) {
+              msg.classList.remove("exit");
+            }
+            setCopied(false);
+          }, 1500);
+        });
+    }
   };
 
   return (
@@ -21,6 +59,10 @@ const ResultModal = (props) => {
         <button className="play-again-button" onClick={handlePlayAgain}>
           دوباره
         </button>
+        <div className="share-container">
+          <button onClick={handleShare}>Share</button>
+          {copied && <p className="pop-msg">کپی شد</p>}
+        </div>
       </div>
     </div>
   );

@@ -36,6 +36,40 @@
   cursor: pointer;
 }
 
+.share-container {
+  width: 100%;
+  display: flex;
+  position: relative;
+  justify-content: center;
+  align-items: center;
+}
+
+.pop-msg {
+  padding: 5px;
+  background-color: black;
+  color: white;
+  position: absolute;
+  transform: translateX(100%);
+  animation-duration: 0.25s;
+  animation-name: animate-fade;
+  animation-delay: 0.15s;
+  animation-fill-mode: backwards;
+}
+
+@keyframes animate-fade {
+  0% {
+    opacity: 0;
+  }
+  100% {
+    opacity: 1;
+  }
+}
+
+.exit {
+  opacity: 0;
+  transition: all 0.25s;
+}
+
 @media (max-width: 720px) {
   .result-modal {
     width: 90vw;
