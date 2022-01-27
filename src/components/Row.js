@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useContext } from "react";
 import ShowResultContext from "../context/showResult";
 import scoreContext from "../context/scoreContext";
+import dictionary from "../dictionary/dictionary";
 import "./Row.css";
 
 let activeTile = 0;
@@ -17,6 +18,21 @@ const Row = (props) => {
   const tileRef5 = useRef();
   const tiles = [tileRef1, tileRef2, tileRef3, tileRef4, tileRef5];
 
+  const showError = () => {
+    const msg = document.querySelector(".error-msg");
+    msg.classList.add("show");
+
+    setTimeout(() => {
+      if (msg) {
+        msg.classList.add("exit");
+      }
+    }, 1000);
+    setTimeout(() => {
+      msg.classList.remove("show");
+      msg.classList.remove("exit");
+    }, 1500);
+  };
+
   const checkGuess = (guess) => {
     if (guess.join("") === props.answer) {
       tiles.forEach((tile) => tile.current.classList.add("green"));
@@ -32,6 +48,7 @@ const Row = (props) => {
       setHasLost(false);
       return;
     }
+
     let remainingGuess = [];
     let remainingAnswer = [];
     let guessColor = [null, null, null, null, null];
@@ -116,7 +133,10 @@ const Row = (props) => {
       return;
     } else if (activeTile > 4 && key === "Enter") {
       const guessed = tiles.map((tile) => tile.current.textContent);
-      // document.removeEventListener("keydown", handleKeyDown);
+      if (!dictionary.includes(guessed.join(""))) {
+        showError();
+        return;
+      }
       checkGuess(guessed);
       props.setActiveRow((current) => current + 1);
       activeTile = 0;
@@ -141,6 +161,12 @@ const Row = (props) => {
 
   return (
     <div className="row">
+      <div className="error-msg">
+        <p>کلمه در مخزن کلمات وجود ندارد.</p>
+        {"\n"}
+        <p>یک کلمه دیگه امتحان کنید.</p>
+      </div>
+
       <div className="tile first" ref={props.active ? tileRef1 : null}></div>
       <div className="tile" ref={props.active ? tileRef2 : null}></div>
       <div className="tile" ref={props.active ? tileRef3 : null}></div>

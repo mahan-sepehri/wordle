@@ -32,6 +32,24 @@ button.how-to {
   left: 7%;
 }
 
+.error-msg {
+  position: absolute;
+  background-color: black;
+  color: white;
+  padding: 10px;
+  top: 80px;
+  display: none;
+}
+
+.error-msg.show {
+  display: block;
+}
+
+.error-msg p {
+  margin: 0;
+  padding: 0 0 10px 0;
+}
+
 .row-container {
   display: flex;
   flex-direction: column;
