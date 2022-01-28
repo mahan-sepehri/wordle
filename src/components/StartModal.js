@@ -1,8 +1,10 @@
-import React from "react";
+import React, { useContext } from "react";
+import scoreContext from "../context/scoreContext";
 
 import "./StartModal.css";
 
 const StartModal = (props) => {
+  const { setPlayed } = useContext(scoreContext);
   return (
     <div className="start-overlay">
       <div className="start-modal">
@@ -11,7 +13,7 @@ const StartModal = (props) => {
             className="close-button"
             onClick={() => {
               localStorage.setItem("played", true);
-              props.setPlayed(true);
+              setPlayed(true);
             }}
           >
             X

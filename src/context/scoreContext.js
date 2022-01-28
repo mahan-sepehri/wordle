@@ -13,17 +13,12 @@ export const ScoreContextProvider = (props) => {
   const [highScore, setHighScore] = useState(
     +localStorage.getItem("highscore") || 0
   );
-  const saveScore = (streak, highScore) => {
-    localStorage.setItem("streak", JSON.stringify(streak));
-    localStorage.setItem("highscore", JSON.stringify(highScore));
-  };
 
   return (
     <scoreContext.Provider
       value={{
         streak,
         setStreak,
-        saveScore,
         highScore,
         setHighScore,
         played,

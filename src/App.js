@@ -7,12 +7,8 @@ import StartModal from "./components/StartModal";
 import ResultModal from "./components/ResultModal";
 import ShowResultContext from "./context/showResult";
 import scoreContext from "./context/scoreContext";
-import dictionary from "./dictionary/dictionary";
 
 import "./App.css";
-
-const randomNum = Math.floor(Math.random() * dictionary.indexOf("زوبین"));
-let answer = dictionary[randomNum];
 
 const App = () => {
   const [activeRow, setActiveRow] = useState(1);
@@ -23,12 +19,12 @@ const App = () => {
   const { played, setPlayed } = useContext(scoreContext);
   return (
     <>
-      {!played && <StartModal setPlayed={setPlayed} />}
+      {!played && <StartModal />}
       {showResult && (
         <ResultModal
           msg={hasLost ? "باختی" : "برنده شدی!"}
           setActiveRow={setActiveRow}
-          answer={answer}
+          setLastKeyPress={setLastKeyPress}
         />
       )}
 
@@ -45,7 +41,6 @@ const App = () => {
             activeRow={activeRow}
             lastKeyPress={lastKeyPress}
             setLastKeyPress={setLastKeyPress}
-            answer={answer}
           />
           <Row
             active={activeRow === 2 ? true : false}
@@ -53,7 +48,6 @@ const App = () => {
             activeRow={activeRow}
             lastKeyPress={lastKeyPress}
             setLastKeyPress={setLastKeyPress}
-            answer={answer}
           />
           <Row
             active={activeRow === 3 ? true : false}
@@ -61,7 +55,6 @@ const App = () => {
             activeRow={activeRow}
             lastKeyPress={lastKeyPress}
             setLastKeyPress={setLastKeyPress}
-            answer={answer}
           />
           <Row
             active={activeRow === 4 ? true : false}
@@ -69,7 +62,6 @@ const App = () => {
             lastKeyPress={lastKeyPress}
             activeRow={activeRow}
             setLastKeyPress={setLastKeyPress}
-            answer={answer}
           />
           <Row
             active={activeRow === 5 ? true : false}
@@ -77,7 +69,6 @@ const App = () => {
             lastKeyPress={lastKeyPress}
             activeRow={activeRow}
             setLastKeyPress={setLastKeyPress}
-            answer={answer}
           />
           <Row
             active={activeRow === 6 ? true : false}
@@ -85,7 +76,6 @@ const App = () => {
             lastKeyPress={lastKeyPress}
             activeRow={activeRow}
             setLastKeyPress={setLastKeyPress}
-            answer={answer}
           />
         </div>
         <div className="keyboard-container">

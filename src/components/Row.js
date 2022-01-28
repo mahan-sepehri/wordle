@@ -1,14 +1,18 @@
 import React, { useEffect, useRef, useContext } from "react";
 import ShowResultContext from "../context/showResult";
 import scoreContext from "../context/scoreContext";
+import gameContext from "../context/gameContext";
+
 import dictionary from "../dictionary/dictionary";
+
 import "./Row.css";
 
 let activeTile = 0;
 
 const Row = (props) => {
+  const { answer } = useContext(gameContext);
   const { setShowResult, setHasLost } = useContext(ShowResultContext);
-  const { setStreak, saveScore, highScore, setHighScore } =
+  const { streak, setStreak, highScore, setHighScore } =
     useContext(scoreContext);
 
   const rowRef = useRef();
@@ -35,19 +39,20 @@ const Row = (props) => {
     }, 2000);
   };
 
+  useEffect(() => {
+    localStorage.setItem("streak", JSON.stringify(streak));
+    if (streak > highScore) {
+      setHighScore(streak);
+    }
+    localStorage.setItem("highscore", JSON.stringify(highScore));
+  }, [streak, highScore, setHighScore]);
+
   const checkGuess = (guess) => {
     rowRef.current.classList.add("active-row");
 
-    if (guess.join("") === props.answer) {
+    if (guess.join("") === answer) {
       tiles.forEach((tile) => tile.current.classList.add("green"));
-
-      setStreak((current) => {
-        if (current + 1 > highScore) {
-          setHighScore(current + 1);
-        }
-        saveScore(current + 1, current + 1);
-        return current++;
-      });
+      setStreak((current) => current + 1);
       setShowResult(true);
       setHasLost(false);
       return;
@@ -57,7 +62,7 @@ const Row = (props) => {
     let remainingAnswer = [];
     let guessColor = [null, null, null, null, null];
     for (let i = 0; i < guess.length; i++) {
-      if (guess[i] === props.answer[i]) {
+      if (guess[i] === answer[i]) {
         tiles[i].current.classList.add("green");
 
         document
@@ -67,7 +72,7 @@ const Row = (props) => {
         guessColor[i] = "green";
       } else {
         remainingGuess.push(guess[i]);
-        remainingAnswer.push(props.answer[i]);
+        remainingAnswer.push(answer[i]);
       }
     }
 
@@ -111,12 +116,9 @@ const Row = (props) => {
       }
     }
     if (props.activeRow === 6) {
+      setStreak(0);
       setHasLost(true);
       setShowResult(true);
-      setStreak(() => {
-        saveScore(0, highScore);
-        return 0;
-      });
       return;
     }
   };
