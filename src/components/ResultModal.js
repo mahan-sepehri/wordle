@@ -35,7 +35,7 @@ const ResultModal = (props) => {
   };
 
   const handleShare = () => {
-    const text = `https://katoore.ir/ \n my highscore: ${highScore}`;
+    const text = `https://katoore.netlify.app/ \n my highscore: ${highScore}`;
     if (navigator.share) {
       navigator.share({
         title: "نامزل",
