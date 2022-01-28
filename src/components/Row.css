@@ -3,35 +3,71 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  gap: 10px;
+  gap: 5px;
 }
 
 .tile {
-  width: 50px;
-  height: 50px;
-  border: 1px solid black;
-  border-radius: 5px;
+  width: 55px;
+  height: 55px;
+  border: 2px solid #d3d6da;
+  /* border-radius: 5px; */
   display: flex;
   justify-content: center;
   align-items: center;
-  font-size: 20px;
+  font-size: 25px;
+  font-weight: bold;
+}
+
+.active-tile {
+  animation-duration: 0.25s;
+  animation-name: grow;
+  animation-fill-mode: backwards;
+}
+
+@keyframes grow {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.2);
+  }
+  100% {
+    transform: scale(1);
+  }
+}
+.active-row {
+  animation-duration: 0.25s;
+  animation-name: grow2;
+  animation-fill-mode: backwards;
+}
+
+@keyframes grow2 {
+  0% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.1);
+  }
+  100% {
+    transform: scale(1);
+  }
 }
 
 .green {
   background-color: #6aaa64;
   color: white;
-  border: 1px solid #6aaa64;
+  border: 2px solid #6aaa64;
 }
 
 .yellow {
   background-color: #c9b458;
   color: white;
-  border: 1px solid #c9b458;
+  border: 2px solid #c9b458;
 }
 
 .grey {
   background-color: #787c7e;
-  border: 1px solid #787c7e;
+  border: 2px solid #787c7e;
   color: white;
 }
 

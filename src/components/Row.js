@@ -11,6 +11,8 @@ const Row = (props) => {
   const { setStreak, saveScore, highScore, setHighScore } =
     useContext(scoreContext);
 
+  const rowRef = useRef();
+
   const tileRef1 = useRef();
   const tileRef2 = useRef();
   const tileRef3 = useRef();
@@ -26,14 +28,16 @@ const Row = (props) => {
       if (msg) {
         msg.classList.add("exit");
       }
-    }, 1000);
+    }, 1500);
     setTimeout(() => {
       msg.classList.remove("show");
       msg.classList.remove("exit");
-    }, 1500);
+    }, 2000);
   };
 
   const checkGuess = (guess) => {
+    rowRef.current.classList.add("active-row");
+
     if (guess.join("") === props.answer) {
       tiles.forEach((tile) => tile.current.classList.add("green"));
 
@@ -127,6 +131,8 @@ const Row = (props) => {
       }
       activeTile--;
       tiles[activeTile].current.textContent = "";
+      tiles[activeTile].current.classList.remove("active-tile");
+
       return;
     }
     if (activeTile > 4 && key !== "Enter") {
@@ -137,6 +143,7 @@ const Row = (props) => {
         showError();
         return;
       }
+      tiles.forEach((tile) => tile.current.classList.remove("active-tile"));
       checkGuess(guessed);
       props.setActiveRow((current) => current + 1);
       activeTile = 0;
@@ -145,29 +152,26 @@ const Row = (props) => {
     }
     if (key.length === 1) {
       tiles[activeTile].current.textContent = key;
+      tiles[activeTile].current.classList.add("active-tile");
       activeTile++;
     }
   };
 
   useEffect(() => {
-    // if (props.active) {
-    //   document.addEventListener("keydown", handleKeyDown);
-    // }
-
     if (props.active && props.lastKeyPress) {
       handleKeyDown(props.lastKeyPress);
     }
   });
 
   return (
-    <div className="row">
+    <div className="row" ref={props.active ? rowRef : null}>
       <div className="error-msg">
         <p>کلمه در مخزن کلمات وجود ندارد.</p>
         {"\n"}
-        <p>یک کلمه دیگه امتحان کنید.</p>
+        <p>یک کلمه دیگر امتحان کنید.</p>
       </div>
 
-      <div className="tile first" ref={props.active ? tileRef1 : null}></div>
+      <div className="tile" ref={props.active ? tileRef1 : null}></div>
       <div className="tile" ref={props.active ? tileRef2 : null}></div>
       <div className="tile" ref={props.active ? tileRef3 : null}></div>
       <div className="tile" ref={props.active ? tileRef4 : null}></div>

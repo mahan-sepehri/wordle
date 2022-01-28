@@ -1,5 +1,9 @@
 * {
-  font-family: "tahoma", cursive;
+  /* font-family: "tahoma", cursive; */
+  /* font-family: "Lalezar", cursive; */
+  font-family: "Baloo Bhaijaan 2", cursive;
+  /* font-family: "Noto Sans Arabic", sans-serif; */
+
   user-select: none;
 }
 
@@ -34,6 +38,7 @@ button.how-to {
 
 .error-msg {
   position: absolute;
+  text-align: center;
   background-color: black;
   color: white;
   padding: 10px;
@@ -53,7 +58,7 @@ button.how-to {
 .row-container {
   display: flex;
   flex-direction: column;
-  gap: 10px;
+  gap: 5px;
 }
 
 .keyboard-container {

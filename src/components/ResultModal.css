@@ -14,7 +14,7 @@
 
 .result-modal {
   width: 70vw;
-  height: 70vh;
+  height: 87vh;
   background-color: white;
   display: flex;
   flex-direction: column;
@@ -83,6 +83,6 @@
 
 @media (max-width: 720px) {
   .result-modal {
-    width: 90vw;
+    width: 96vw;
   }
 }

@@ -26,7 +26,7 @@ const App = () => {
       {!played && <StartModal setPlayed={setPlayed} />}
       {showResult && (
         <ResultModal
-          msg={hasLost ? "باختی" : "برنده‌شدی!"}
+          msg={hasLost ? "باختی" : "برنده شدی!"}
           setActiveRow={setActiveRow}
           answer={answer}
         />
