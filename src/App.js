@@ -7,12 +7,12 @@ import StartModal from "./components/StartModal";
 import ResultModal from "./components/ResultModal";
 import ShowResultContext from "./context/showResult";
 import scoreContext from "./context/scoreContext";
-import nameDictionary from "./dictionary/nameDictionary";
+import dictionary from "./dictionary/dictionary";
 
 import "./App.css";
 
-const randomNum = Math.floor(Math.random() * nameDictionary.length);
-let answer = nameDictionary[randomNum];
+const randomNum = Math.floor(Math.random() * dictionary.indexOf("زوبین"));
+let answer = dictionary[randomNum];
 
 const App = () => {
   const [activeRow, setActiveRow] = useState(1);

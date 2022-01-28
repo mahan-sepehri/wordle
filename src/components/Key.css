@@ -5,7 +5,8 @@
   align-items: center;
   flex: 1;
 
-  background-color: #d3d6da;
+  background-color: #484c4f;
+  color: white;
   font-size: 13px;
   border-radius: 5px;
   cursor: pointer;
@@ -25,8 +26,13 @@
 }
 
 .func-key {
-  background-color: rgb(134, 200, 255);
+  background-color: #6096f8;
 }
+
+.key.func-key.Backspace {
+  background-color: #373c40;
+}
+
 .func-key svg {
   width: 20px;
 }

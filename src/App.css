@@ -7,6 +7,10 @@
   user-select: none;
 }
 
+body {
+  background-color: #292e32;
+}
+
 .game-screen {
   display: flex;
   flex-direction: column;

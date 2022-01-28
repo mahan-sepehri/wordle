@@ -49,11 +49,13 @@ const ResultModal = (props) => {
   return (
     <div className="overlay">
       <div className="result-modal">
-        <h1>{props.msg}</h1>
+        <h2>{props.msg}</h2>
         <div className="set-data">
-          <h2>جواب : {props.answer}</h2>
-          <p>برد متوالی: {localStorage.getItem("streak")}</p>
-          <p>بیشترین امتیاز: {highScore}</p>
+          <h3 className="result-title">جواب : {props.answer}</h3>
+          <p className="result-text">
+            برد متوالی: {localStorage.getItem("streak")}
+          </p>
+          <p className="result-text">بیشترین امتیاز: {highScore}</p>
         </div>
         <button className="play-again-button" onClick={handlePlayAgain}>
           دوباره
