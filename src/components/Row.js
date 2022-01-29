@@ -53,8 +53,10 @@ const Row = (props) => {
     if (guess.join("") === answer) {
       tiles.forEach((tile) => tile.current.classList.add("green"));
       setStreak((current) => current + 1);
-      setShowResult(true);
-      setHasLost(false);
+      setTimeout(() => {
+        setShowResult(true);
+        setHasLost(false);
+      }, 500);
       return;
     }
 
@@ -117,8 +119,11 @@ const Row = (props) => {
     }
     if (props.activeRow === 6) {
       setStreak(0);
-      setHasLost(true);
-      setShowResult(true);
+      setTimeout(() => {
+        setShowResult(true);
+        setHasLost(true);
+      }, 500);
+
       return;
     }
   };

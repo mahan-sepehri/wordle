@@ -6,7 +6,15 @@ import "./StartModal.css";
 const StartModal = (props) => {
   const { setPlayed } = useContext(scoreContext);
   return (
-    <div className="start-overlay">
+    <div
+      className="start-overlay"
+      onClick={(e) => {
+        if (e.target.classList.contains("start-overlay")) {
+          localStorage.setItem("played", true);
+          setPlayed(true);
+        }
+      }}
+    >
       <div className="start-modal">
         <div className="close-button-container">
           <button

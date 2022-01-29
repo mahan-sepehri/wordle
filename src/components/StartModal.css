@@ -14,19 +14,38 @@
 
 .start-modal {
   width: 70vw;
+  max-width: 600px;
   height: 87vh;
   background-color: white;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   align-items: center;
+  animation-duration: 0.45s;
+  animation-name: slide;
+  animation-fill-mode: backwards;
+}
+
+@keyframes slide {
+  0% {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+  50% {
+    transform: translateY(20%);
+    opacity: 0;
+  }
+  100% {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 .game-rules {
   display: flex;
   flex-direction: column;
-  padding-left: 5vw;
-  padding-right: 5vw;
+  padding-left: 10vw;
+  padding-right: 10vw;
   flex: 1;
   gap: 10px;
 }
@@ -62,6 +81,6 @@
 
 @media (max-width: 720px) {
   .start-modal {
-    width: 96vw;
+    width: 90vw;
   }
 }

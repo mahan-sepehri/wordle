@@ -27,6 +27,9 @@ const ResultModal = (props) => {
       key.removeAttribute("data-state");
     });
 
+    const rows = document.querySelectorAll(".row");
+    rows.forEach((row) => row.classList.remove("active-row"));
+
     getNewAnswer();
     props.setActiveRow(1);
     props.setLastKeyPress("");
