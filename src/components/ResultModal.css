@@ -15,8 +15,8 @@
 .result-modal {
   width: 70vw;
   max-width: 600px;
-
-  height: 87vh;
+  padding-top: 20px;
+  padding-bottom: 40px;
   background-color: white;
   display: flex;
   flex-direction: column;

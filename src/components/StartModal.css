@@ -15,7 +15,7 @@
 .start-modal {
   width: 70vw;
   max-width: 600px;
-  height: 87vh;
+  padding-bottom: 60px;
   background-color: white;
   display: flex;
   flex-direction: column;
